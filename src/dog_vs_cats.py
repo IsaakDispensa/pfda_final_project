@@ -43,3 +43,24 @@ cat_images = [
     pygame.transform.scale(pygame.image.load("cat4.png"), (160, 160)),
     pygame.transform.scale(pygame.image.load("cat5.png"), (160, 160)),
     ]
+
+
+# Floor level
+FLOOR_LEVEL = GAME_HEIGHT - 50
+
+# Dog
+dog_x = GAME_WIDTH // 2
+dog_y = FLOOR_LEVEL - dog_image.get_height()
+dog_movement = 0
+
+def move_left():
+    global dog_movement
+    dog_movement = -1
+
+def move_right():
+    global dog_movement
+    dog_movement = 1
+
+def stop_dog():
+    global dog_movement
+    dog_movement = 0
