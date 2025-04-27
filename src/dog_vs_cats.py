@@ -12,5 +12,11 @@ CAT_SPEED = 2.0
 # Initialize Pygame
 pygame.init()
 
+# Create game screen
+screen = pygame.display.set_mode((GAME_WIDTH, GAME_HEIGHT))
+pygame.display.set_caption("Dog VS Cats")
+clock = pygame.time.Clock()
+
+
 
 
