@@ -24,3 +24,22 @@ defeat_sound = pygame.mixer.Sound("defeat.flac")
 screen = pygame.display.set_mode((GAME_WIDTH, GAME_HEIGHT))
 pygame.display.set_caption("Dog VS Cats")
 clock = pygame.time.Clock()
+
+# Load images
+grass_image = pygame.image.load("grass.png")
+grass_image = pygame.transform.scale(grass_image, (GAME_WIDTH, GAME_HEIGHT))
+   
+dog_image = pygame.image.load("dog.png")
+dog_image = pygame.transform.scale(dog_image, (200, 200))
+   
+ball_image = pygame.image.load("bone.png")
+ball_image = pygame.transform.scale(ball_image, (80, 60))
+   
+cat_images = [
+    pygame.transform.scale(pygame.image.load("cat.png"), (160, 160)),
+    pygame.transform.scale(pygame.image.load("cat1.png"), (160, 160)),
+    pygame.transform.scale(pygame.image.load("cat2.png"), (160, 160)),
+    pygame.transform.scale(pygame.image.load("cat3.png"), (160, 130)),
+    pygame.transform.scale(pygame.image.load("cat4.png"), (160, 160)),
+    pygame.transform.scale(pygame.image.load("cat5.png"), (160, 160)),
+    ]
