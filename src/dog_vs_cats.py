@@ -53,6 +53,10 @@ dog_x = GAME_WIDTH // 2
 dog_y = FLOOR_LEVEL - dog_image.get_height()
 dog_movement = 0
 
+# Lists
+balls = []
+cats = []
+
 def move_left():
     global dog_movement
     dog_movement = -1
@@ -64,3 +68,21 @@ def move_right():
 def stop_dog():
     global dog_movement
     dog_movement = 0
+
+def create_ball():
+    ball_x = dog_x + 80
+    ball_y = dog_y - 40
+    balls.append([ball_x, ball_y])
+
+
+def create_cat():
+    cat_x = random.randint(0, GAME_WIDTH - 160)  # 160 = width of cat images
+    cat_image = random.choice(cat_images)  # Pick random cat image
+    cats.append({"x": cat_x, "y": 0, "image": cat_image})
+
+
+def remove_sprite(sprite_list, index):
+    del sprite_list[index]
+
+
+pygame.quit()
