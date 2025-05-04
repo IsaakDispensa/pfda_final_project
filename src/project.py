@@ -125,5 +125,14 @@ while game_running:
                 score += 1
                 break
 
+    if time.time() - cat_timer > CAT_SPAWN_INTERVAL:
+        create_cat()
+        cat_timer = time.time()
+
+    for cat in cats.copy():
+        cat["y"] += CAT_SPEED
+        if cat["y"] > FLOOR_LEVEL:
+            game_running = False
+            
 
 pygame.quit()
