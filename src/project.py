@@ -133,6 +133,13 @@ while game_running:
         cat["y"] += CAT_SPEED
         if cat["y"] > FLOOR_LEVEL:
             game_running = False
-            
+    
+    screen.blit(dog_image, (dog_x, dog_y))
+
+    for ball in balls:
+        screen.blit(ball_image, (ball[0], ball[1]))
+
+    for cat in cats:
+        screen.blit(cat["image"], (cat["x"], cat["y"]))
 
 pygame.quit()
