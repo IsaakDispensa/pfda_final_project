@@ -109,5 +109,21 @@ while game_running:
             if event.key in (pygame.K_LEFT, pygame.K_RIGHT):
                 stop_dog()
 
+    dog_x += DOG_STEP * dog_movement
+    dog_x = max(0, min(dog_x, GAME_WIDTH - dog_image.get_width()))
+
+
+    for ball in balls.copy():
+        ball[1] -= BALL_SPEED
+        if ball[1] < 0:
+            balls.remove(ball)
+        for i, cat in enumerate(cats.copy()):
+            if int(ball[0]) in range(int(cat["x"]) - 80, int(cat["x"]) + 80) and int(ball[1]) in range(int(cat["y"]) - 80, int(cat["y"]) + 80):
+                remove_sprite(balls, balls.index(ball))
+                remove_sprite(cats, i)
+                defeat_sound.play()
+                score += 1
+                break
+
 
 pygame.quit()
