@@ -76,13 +76,38 @@ def create_ball():
 
 
 def create_cat():
-    cat_x = random.randint(0, GAME_WIDTH - 160)  # 160 = width of cat images
+    cat_x = random.randint(0, GAME_WIDTH - 160)  
     cat_image = random.choice(cat_images)  # Pick random cat image
     cats.append({"x": cat_x, "y": 0, "image": cat_image})
 
 
 def remove_sprite(sprite_list, index):
     del sprite_list[index]
+
+# Game loop
+cat_timer = 0
+game_running = True
+
+
+while game_running:
+    screen.blit(grass_image, (0, 0))
+
+
+    for event in pygame.event.get():
+        if event.type == pygame.QUIT:
+            game_running = False
+        if event.type == pygame.KEYDOWN:
+            if event.key == pygame.K_LEFT:
+                move_left()
+            elif event.key == pygame.K_RIGHT:
+                move_right()
+            elif event.key == pygame.K_SPACE:
+                create_ball()
+            elif event.key == pygame.K_q:
+                game_running = False
+        if event.type == pygame.KEYUP:
+            if event.key in (pygame.K_LEFT, pygame.K_RIGHT):
+                stop_dog()
 
 
 pygame.quit()
