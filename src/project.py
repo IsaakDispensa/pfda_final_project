@@ -44,6 +44,9 @@ cat_images = [
     pygame.transform.scale(pygame.image.load("cat5.png"), (160, 160)),
     ]
 
+# Colors
+WHITE = (255, 255, 255)
+BLACK = (0, 0, 0)
 
 # Floor level
 FLOOR_LEVEL = GAME_HEIGHT - 50
@@ -52,6 +55,13 @@ FLOOR_LEVEL = GAME_HEIGHT - 50
 dog_x = GAME_WIDTH // 2
 dog_y = FLOOR_LEVEL - dog_image.get_height()
 dog_movement = 0
+
+# Score
+score = 0
+
+# Load pixel-style fonts
+score_font = pygame.font.SysFont("Courier", 30, bold=True)
+game_over_font = pygame.font.SysFont("Courier", 60, bold=True)
 
 # Lists
 balls = []
@@ -141,5 +151,18 @@ while game_running:
 
     for cat in cats:
         screen.blit(cat["image"], (cat["x"], cat["y"]))
+    
+       # Score
+    padding = 50
+    score_label = f"Score: {score}"
+
+    # Draw white outline
+    for dx, dy in [(-2, 0), (2, 0), (0, -2), (0, 2), (-2, -2), (2, -2), (-2, 2), (2, 2)]:
+        outline = score_font.render(score_label, True, WHITE)
+        screen.blit(outline, (GAME_WIDTH - outline.get_width() - padding + dx, padding + dy))
+
+    # Draw black fill
+    text_surface = score_font.render(score_label, True, BLACK)
+    screen.blit(text_surface, (GAME_WIDTH - text_surface.get_width() - padding, padding))
 
 pygame.quit()
