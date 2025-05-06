@@ -2,7 +2,7 @@ import pygame
 import random
 import time
 
-#Constants
+# Constants
 GAME_WIDTH, GAME_HEIGHT = 1400, 900
 DOG_STEP = 5.0
 BALL_SPEED = 4.0
@@ -26,6 +26,7 @@ pygame.display.set_caption("Dog VS Cats")
 clock = pygame.time.Clock()
 
 # Load images
+grass_image = pygame.image.load("grass.png")
 grass_image = pygame.image.load("grass.png")
 grass_image = pygame.transform.scale(grass_image, (GAME_WIDTH, GAME_HEIGHT))
    
@@ -86,7 +87,7 @@ def create_ball():
 
 
 def create_cat():
-    cat_x = random.randint(0, GAME_WIDTH - 160)  
+    cat_x = random.randint(0, GAME_WIDTH - 160)  # 160 = width of cat images
     cat_image = random.choice(cat_images)  # Pick random cat image
     cats.append({"x": cat_x, "y": 0, "image": cat_image})
 
@@ -143,7 +144,7 @@ while game_running:
         cat["y"] += CAT_SPEED
         if cat["y"] > FLOOR_LEVEL:
             game_running = False
-    
+
     screen.blit(dog_image, (dog_x, dog_y))
 
     for ball in balls:
@@ -151,8 +152,8 @@ while game_running:
 
     for cat in cats:
         screen.blit(cat["image"], (cat["x"], cat["y"]))
-    
-       # Score
+
+    # Score
     padding = 50
     score_label = f"Score: {score}"
 
@@ -187,4 +188,16 @@ text_surface = game_over_font.render(game_over_label, True, BLACK)
 text_rect = text_surface.get_rect(center=(GAME_WIDTH // 2, GAME_HEIGHT // 2))
 screen.blit(text_surface, text_rect)
 
-pygame.quit()
+# Draw the final score
+score_label = f"Final Score: {score}"
+# Draw white outline for score
+for dx, dy in [(-2, 0), (2, 0), (0, -2), (0, 2), (-2, -2), (2, -2), (-2, 2), (2, 2)]:
+    outline = score_font.render(score_label, True, WHITE)
+    screen.blit(outline, (GAME_WIDTH // 2 - outline.get_width() // 2 + dx, GAME_HEIGHT // 2 + 80 + dy))
+
+# Draw black fill for score
+text_surface = score_font.render(score_label, True, BLACK)
+screen.blit(text_surface, (GAME_WIDTH // 2 - text_surface.get_width() // 2, GAME_HEIGHT // 2 + 80))
+
+pygame.display.flip()
+pygame.time.wait(3000)
