@@ -182,4 +182,9 @@ for dx, dy in [(-3, 0), (3, 0), (0, -3), (0, 3), (-3, -3), (3, -3), (-3, 3), (3,
     text_rect = outline.get_rect(center=(GAME_WIDTH // 2 + dx, GAME_HEIGHT // 2 + dy))
     screen.blit(outline, text_rect)
 
+# Draw black fill for "Game Over"
+text_surface = game_over_font.render(game_over_label, True, BLACK)
+text_rect = text_surface.get_rect(center=(GAME_WIDTH // 2, GAME_HEIGHT // 2))
+screen.blit(text_surface, text_rect)
+
 pygame.quit()
