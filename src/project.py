@@ -165,4 +165,21 @@ while game_running:
     text_surface = score_font.render(score_label, True, BLACK)
     screen.blit(text_surface, (GAME_WIDTH - text_surface.get_width() - padding, padding))
 
+    pygame.display.flip()
+    clock.tick(60)
+
+# After game ends
+pygame.mixer.music.stop()
+
+# Game Over Screen
+screen.fill((0, 0, 0))
+
+# Draw the "Game Over" label
+game_over_label = "GAME OVER"
+# Draw white outline
+for dx, dy in [(-3, 0), (3, 0), (0, -3), (0, 3), (-3, -3), (3, -3), (-3, 3), (3, 3)]:
+    outline = game_over_font.render(game_over_label, True, WHITE)
+    text_rect = outline.get_rect(center=(GAME_WIDTH // 2 + dx, GAME_HEIGHT // 2 + dy))
+    screen.blit(outline, text_rect)
+
 pygame.quit()
