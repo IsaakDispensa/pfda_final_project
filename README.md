@@ -1,54 +1,38 @@
 # DOG VS CATS
 
-## Repository
-https://github.com/IsaakDispensa/pfda_final_project.git
+## Demo
+Demo Video: 
+
+## GitHub Repository
+GitHub Repo: https://github.com/IsaakDispensa/pfda_final_project.git
 
 ## Description
-Similar to out last lecture, I want to create a small pixelated "space invaders" game, except with a "dog VS cats" theme! I want the player to control a small dog icon (that's in a field) and throughout the game the player will shoot tennis balls at angry cats to eliminate them.
-
-## Features
-- A moveable dog icon (WASD): Use event listeners to detect key presses (W, A, S, D), and update the dog's x and y coordinates accordingly in your game loop. I'll also want to prevent the dog from moving off-screen by checking boundaries.
-
-- Point Tracker for each cat you eliminate (IE: "Points: 12"): I'd create a points variable and increase it each time a tennis ball successfully hits a cat. I'm thinking of displaying the score in the top corner using a text draw function in my main render loop.
-
-- Pressing "space" fires off a tennis ball: Detect when the spacebar is pressed and spawn a tennis ball object at the dog’s current location.
-
-- Any fired balls can then hit a moving cat to eliminate it from the screen: Loop through all active tennis balls and all cats each frame, and check for collisions. If a ball hits a cat, remove both the ball and cat from their respective lists, and increase the score.
-
-- If a cat touches the dog, your player is eliminated ("Game over! Final Score:__"): Check for collisions between the dog and any cats during the game loop. If there’s a collision, end the game and display a game-over message with the final score.
-
-- I want there to be music/sound effects: I'd load audio files using my framework’s sound system (like pygame.mixer), then play background music on a loop and trigger sound effects during events like shooting or cat elimination.
+Summary: 
+-Dog VS Cats is a 2D arcade-style game created using Pygame. Players take control of a dog who fends off cats by launching bones at them. Cats fall from the top of the screen at regular intervals, and the player must move the dog left or right to aim and shoot accurately. Each cat defeated earns the player a point, but if even one cat reaches the ground, the game ends.
 
 
-- I want players to be able to restart the game: Add a "restart" state or button that resets all game variables (score, dog/cat/ball positions, etc.) to their starting values and brings the player back to the beginning of the game when triggered.
+File Descriptions:
+-The main script, project.py, contains the full logic for the game. It includes everything from initializing Pygame and managing the game loop to handling player inputs, spawning enemies, detecting collisions, and rendering visuals on the screen. Key functions such as create_ball, create_cat, and move_left help keep the game’s logic modular and organized for easier maintenance and expansion.
 
-## Challenges
-- I need to research how to add music/sounds to my game.
-- I want my game to have a point system, so I need to resarch that mechanic.
-- I am also aiming to have the player die/restart in my game, so that will require a few tutorials.
+-Image assets such as dog.png, bone.png, and various cat.png files provide the characters and interactive elements of the game. The background, grass.png, sets the visual stage for gameplay, while multiple cat images are used to randomly vary the enemies' appearance. I used familiar cat meme icons to make the game more fun and relevant. The dog is also from “Undertale”, a 2d pixel game, because I wanted to add in a cute little reference. 
 
-## Outcomes
-Ideal Outcome:
--My ideal outcome will be a working "space invaders" style game with a dog VS cat theme. I there to be great visuals with a working "shoot" feature to eliminate cats (the dog will throw/shoot tennis balls at the cats). If I can, I want to add a point system, music, and sound effects. I would also like the cats to move about the screen and advance towards the player's dog.
+-Sound assets include a looping background music track (jazz.wav) that creates a playful, upbeat mood. A separate sound effect (defeat.flac) plays each time the player successfully defeats a cat.
 
-Minimal Viable Outcome:
--At minimum, I would at least like a working game where cats pop up and the dog moves to shoots tennis balls to "eliminate" them. Sound effects/music/a point system isn't necessary but would be a plus.
 
-## Milestones
+Features:
+-One of the standout features is the fullscreen mode, which allows the game to occupy the entire display. 
 
-- Week 1
-  1. Find the dog/cat/tennis ball/backdrop images.
-  2. Incorporate a mechanic to allow the dog to move with WASD.
-  3. Incorporate a mechanic to have the dog fire off tennis balls when the player hits the "space" bar.
-  4. Find WAV files for the sound effects/music, too.
+-The game also features randomized cat appearances using multiple cat images. Each time a cat is spawned, a different sprite is selected at random, which adds variety and keeps the visuals from feeling repetitive.
 
-- Week 2
-  1. Create mechanic that allows cats to pop up randomly and advance towards the player's dog.
-  2. If any of the cats touch the dog, then add function to make the game end. "Sorry! Game Over!"
-  3. Incorporate a mechanic to where if any of the tennis balls hit a cat, then the cat vanishes off the screen.
+-The projectile system allows players to press the spacebar to fire bones upward from the dog’s position. 
 
-- Week N (Final)
-  1. Finally, add in the bonus point system where each time a player "eliminates" a cat, the player gains a point.
-  2. Add in the music and sound effects. (EX: when the player fires off a tennis ball, the dog barks.)
-  3. Clean up everything, record the video, and submit.
+-Score tracking utilizes the “Courier” font with a white outline for visibility against the background. The current score is always displayed during gameplay, and a final score is shown on a “game over” screen once the player loses.
+
+-Finally, music and sound effects give the game a more dynamic and professional feel. The background track runs continuously during gameplay, and the cat defeat sound plays once a bone collides with their “hitbox”
+
+
+Future Improvements:
+-There are several areas where the game could be expanded or improved. One idea is to add power-ups, such as special bones that do more damage or shields that protect the dog from cats reaching the ground.
+
+-Another improvement would be a menu system, including a start screen, a pause/resume function, and the ability to restart the game without relaunching it. Keeping track of a high score would also add a layer of replayability and competition.
 
