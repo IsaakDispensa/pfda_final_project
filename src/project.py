@@ -173,4 +173,4 @@ screen.blit(text_surface, (GAME_WIDTH // 2 - text_surface.get_width() // 2, GAME
 
 pygame.display.flip()
 pygame.time.wait(3000)
-pygame.quit()
+pygame.quit()   
